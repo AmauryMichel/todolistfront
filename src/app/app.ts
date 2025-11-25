@@ -1,12 +1,15 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { UserService } from './services/user';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  template: '<h1>{{ this.message }}</h1>',
 })
-export class App {
-  protected readonly title = signal('todolistfront');
+export class AppComponent implements OnInit {
+  message: string = '';
+  constructor(private userService: UserService) {}
+  ngOnInit() {
+    this.userService.getUsers().subscribe(data => this.message = data);
+  }
 }
