@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../../data/schema/user';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,13 @@ import { Observable } from 'rxjs';
 export class UserService {
   private apiUrl = 'http://localhost:8080/users';
   constructor(private http: HttpClient) {}
+  
   getUsers(): Observable<string> {
     return this.http.get(this.apiUrl, { responseType: 'text' });
+  }
+
+  createUser(user: User) {
+    // console.log(user)
+    return this.http.post<User>(this.apiUrl, user)
   }
 }

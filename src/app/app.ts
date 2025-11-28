@@ -1,17 +1,16 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { UserService } from './shared/services/user';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { UserService } from './shared/services/user-service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-    message: string = '';
   constructor(private userService: UserService) {}
   ngOnInit() {
-    this.userService.getUsers().subscribe(data => this.message = data);
+    // this.userService.getUsers().subscribe();
   }
 }
