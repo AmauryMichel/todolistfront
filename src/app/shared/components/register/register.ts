@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { User } from '../../../data/schema/user';
 import { UserService } from '../../services/user-service';
 
 @Component({
@@ -16,9 +15,13 @@ export class Register {
 
   registerForm = new FormGroup({
     username: new FormControl<string>('', {nonNullable: true, validators:[Validators.required]}),
-    password: new FormControl<string>('', {nonNullable: true, validators:[Validators.required, Validators.minLength(6)]})
+    password: new FormControl<string>('', {nonNullable: true, validators:[Validators.required, Validators.minLength(4)]})
   })
   onSubmit() {
-    this.userService.createUser(this.registerForm.getRawValue()).subscribe(result => console.log("result"))
+    this.userService.createUser(this.registerForm.getRawValue()).subscribe(
+      result => {
+        console.log(result)
+      }
+    )
   }
 }
