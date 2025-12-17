@@ -13,8 +13,4 @@ export class UserService {
   getUsers(): Observable<string> {
     return this.http.get(this.apiUrl, { responseType: 'text' });
   }
-
-  createUser(user: User) {
-    return this.http.post<User>(this.apiUrl, user)
-  }
 }
