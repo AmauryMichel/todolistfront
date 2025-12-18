@@ -11,7 +11,7 @@ export class AuthentificationService {
   constructor(private http: HttpClient) {}
   
   register(user: User) {
-    return this.http.post<User>(this.apiUrl + '/register', user)
+    return this.http.post(this.apiUrl + '/register', user, { responseType: 'text' })
   }
 
   login(user: User) {

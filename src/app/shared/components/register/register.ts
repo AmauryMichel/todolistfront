@@ -22,6 +22,8 @@ export class Register {
     this.authentificationService.register(this.registerForm.getRawValue()).subscribe(
       result => {
         console.log(result)
+        localStorage.setItem('token', result)
+        localStorage.setItem('username', this.registerForm.getRawValue().username)
       }
     )
   }

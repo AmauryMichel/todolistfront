@@ -22,6 +22,7 @@ export class Login {
       result => {
         console.log(result)
         localStorage.setItem('token', result)
+        localStorage.setItem('username', this.loginForm.getRawValue().username)
       }
     )
   }
