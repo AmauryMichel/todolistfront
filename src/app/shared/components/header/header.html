@@ -1,0 +1,21 @@
+<header>
+    <div id="headerRight">
+        <a routerLink="/">Home</a>
+        @if (isLoggedIn) {
+            <a routerLink="/">My Projects</a>
+        } 
+    </div>
+
+    @if (isLoggedIn) {
+        <div id="headerLeftLoggedIn">
+            <a routerLink="/">Profile</a>
+            <a>Log out</a>
+        </div>
+
+    } @else {
+        <div id="headerLeftLoggedOut">
+            <a routerLink="/register">Register</a>
+            <a routerLink="/login">Login</a>
+        </div>
+    }
+</header>
