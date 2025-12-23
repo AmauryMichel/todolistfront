@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AuthentificationService } from '../../services/authentification-service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,20 @@ import { RouterLink } from '@angular/router';
   styleUrl: './header.css',
 })
 export class HeaderComponent {
-  isLoggedIn: boolean;
+  constructor(
+    private authentificationService: AuthentificationService
+  ) {}
 
+  isLoggedIn: boolean = localStorage.getItem("token") != null
+  
   ngOnInit(): void {
-    this.isLoggedIn = localStorage.getItem("token") != null
+    // Update isLoggedIn to change header without refreshing the page
+    this.authentificationService.isAuthenticated.subscribe((isAuthenticated: any) => {
+      this.isLoggedIn = isAuthenticated      
+    })
+  }
+
+  logOut() {
+    this.authentificationService.setLoggedOut()
   }
 }

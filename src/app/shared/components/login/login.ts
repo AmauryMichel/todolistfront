@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthentificationService } from '../../services/authentification-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,8 @@ import { AuthentificationService } from '../../services/authentification-service
 })
 export class Login {
   constructor(
-    private authentificationService: AuthentificationService
+    private authentificationService: AuthentificationService,
+    private router: Router
   ) {}
 
   loginForm = new FormGroup({
@@ -20,9 +22,7 @@ export class Login {
   onSubmit() {
     this.authentificationService.login(this.loginForm.getRawValue()).subscribe(
       result => {
-        console.log(result)
-        localStorage.setItem('token', result)
-        localStorage.setItem('username', this.loginForm.getRawValue().username)
+        this.authentificationService.setLoggedIn(result, this.loginForm.getRawValue().username)
       }
     )
   }

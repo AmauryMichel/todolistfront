@@ -2,14 +2,14 @@
     <div id="headerRight">
         <a routerLink="/">Home</a>
         @if (isLoggedIn) {
-            <a routerLink="/">My Projects</a>
+            <button routerLink="/">My Projects</button>
         } 
     </div>
 
     @if (isLoggedIn) {
         <div id="headerLeftLoggedIn">
             <a routerLink="/">Profile</a>
-            <a>Log out</a>
+            <a routerLink="/" (click)="logOut()">Log out</a>
         </div>
 
     } @else {
