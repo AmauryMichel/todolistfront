@@ -23,6 +23,7 @@ export class Login {
     this.authentificationService.login(this.loginForm.getRawValue()).subscribe(
       result => {
         this.authentificationService.setLoggedIn(result, this.loginForm.getRawValue().username)
+        this.router.navigateByUrl('/')
       }
     )
   }

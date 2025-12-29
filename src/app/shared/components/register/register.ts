@@ -24,6 +24,7 @@ export class Register {
     this.authentificationService.register(this.registerForm.getRawValue()).subscribe(
       result => {
         this.authentificationService.setLoggedIn(result, this.registerForm.getRawValue().username)
+        this.router.navigateByUrl('/')
       }
     )
   }
