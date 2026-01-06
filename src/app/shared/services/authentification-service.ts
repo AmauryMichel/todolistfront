@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+
 import { User } from '../../data/schema/user';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -22,13 +23,16 @@ export class AuthentificationService {
   }
 
   setLoggedIn(token: string, username: string) {  
-    localStorage.setItem('token', token)
+    let splitToken = token.split("!")
+    localStorage.setItem('token', splitToken[1])
+    localStorage.setItem('userId', splitToken[0])
     localStorage.setItem('username', username)
     this.isAuthenticated.next(true);
   }
 
   setLoggedOut() {
     localStorage.removeItem('token')
+    localStorage.removeItem('userId')
     localStorage.removeItem('username')
     this.isAuthenticated.next(false);
   }
