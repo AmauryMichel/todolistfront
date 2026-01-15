@@ -13,7 +13,7 @@ export class HeaderComponent {
     private authentificationService: AuthentificationService
   ) {}
 
-  isLoggedIn: boolean = localStorage.getItem("token") != null
+  isLoggedIn: boolean = localStorage.getItem("user") != null
   
   ngOnInit(): void {
     // Update isLoggedIn to change header without refreshing the page
