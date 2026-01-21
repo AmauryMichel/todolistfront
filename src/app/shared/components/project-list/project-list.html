@@ -1,1 +1,14 @@
 <button type="submit" (click)="displayProjectForm()"> Create project </button>
+
+<div class="projectList">
+    @for (project of projectList; track project.id) {
+    <div class="project" [routerLink]="['/project/', project.id]">
+        <h2>{{ project.projectName }}</h2>
+        <i>Created by:</i> {{ project.creator.username }}
+    </div>
+    } @empty {
+    <div>
+        You are not part of any projects 
+    </div>
+    }
+</div>

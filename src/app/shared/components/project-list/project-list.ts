@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectorRef } from '@angular/core';
 import { UserService } from '../../services/user-service';
 import { Dialog } from '@angular/cdk/dialog'
 
@@ -17,6 +17,7 @@ import { RouterLink } from '@angular/router';
 export class ProjectList {
   constructor(
     private userService: UserService,
+    private changeDetection: ChangeDetectorRef
   ) {}
 
   private dialog = inject(Dialog)
@@ -32,7 +33,8 @@ export class ProjectList {
 
     this.userService.getUserProjects(user.id.toString()).subscribe(
       result => {
-        console.log(result);
+        this.projectList = result
+        this.changeDetection.detectChanges()
       }
     );
   }
