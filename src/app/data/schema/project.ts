@@ -7,6 +7,7 @@ export class Project {
     projectName: string
     projectMembers?: Array<User>
     noteGroups?: Array<Notegroup>
+    description?: string
     
     constructor(creator: User, projectName: string) {
         this.creator = creator
