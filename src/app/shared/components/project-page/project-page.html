@@ -1,0 +1,13 @@
+@if (project) {
+    <div class="grouplist" >
+    @for (notegroup of project.noteGroups; track notegroup.id) {
+        <div class="notegroup">
+            <h2>{{ notegroup.name }}</h2>
+
+        @for (note of notegroup.notes; track note.id) {
+            <p>{{ note.text }}</p>
+        }
+        </div>
+    }
+    </div>
+}
