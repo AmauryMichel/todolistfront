@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 import { User } from '../../data/schema/user';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,14 +13,16 @@ export class AuthentificationService {
 
   public isAuthenticated = new Subject()
 
-  private apiUrl = 'http://localhost:8080/auth';
+  private authUrl = '/auth';
+  private registerUrl = '/register'
+  private loginUrl = '/login'
   
   register(user: User) {
-    return this.http.post(this.apiUrl + '/register', user, { responseType: 'text' })
+    return this.http.post(environment.apiUrl + this.authUrl + this.registerUrl, user, { responseType: 'text' })
   }
 
   login(user: User) {
-    return this.http.post(this.apiUrl + '/login', user, { responseType: 'text' });
+    return this.http.post(environment.apiUrl + this.authUrl + this.loginUrl, user, { responseType: 'text' });
   }
 
   setLoggedIn(token: string, username: string) {  
