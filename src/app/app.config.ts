@@ -9,8 +9,6 @@ import { AuthInterceptor } from './core/interceptor/auth-interceptor';
 
 //PrimeNG
 import { MessageService } from 'primeng/api';
-import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeuix/themes/aura';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,8 +20,5 @@ export const appConfig: ApplicationConfig = {
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 
-    providePrimeNG({
-      theme: {preset: Aura}
-    })
   ]
 };
