@@ -1,10 +1,17 @@
-<button type="submit" (click)="displayProjectForm()"> Create project </button>
+<div class="createButtonDiv">
+    <button class="submitButton" type="submit" (click)="displayProjectForm()"> Create project </button>
+</div>
 
 <div class="projectList">
     @for (project of projectList; track project.id) {
     <div class="project" [routerLink]="['/project/', project.id]">
         <h2>{{ project.projectName }}</h2>
+        <hr>
         <i>Created by:</i> {{ project.creator.username }}
+        @if (project.description) {
+            <hr>
+            <p>{{ project.description }}</p>
+        }
     </div>
     } @empty {
     <div>
