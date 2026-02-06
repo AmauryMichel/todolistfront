@@ -1,6 +1,7 @@
 @if (project) {
+    <button class="noteGroupButton" (click)="displayNoteGroupForm()">Create a note group</button>
     <div class="grouplist" >
-    @for (notegroup of project.noteGroups; track notegroup.id) {
+    @for (notegroup of project.noteGroups; track $index) {
         <div class="notegroup">
             <h2>{{ notegroup.name }}</h2>
 

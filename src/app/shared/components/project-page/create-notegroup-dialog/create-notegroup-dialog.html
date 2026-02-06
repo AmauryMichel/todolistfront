@@ -1,0 +1,7 @@
+<div class="formParent">
+    <h2>Create a new Note Group</h2>
+    <form class="formClass" [formGroup]="noteGroupForm" (ngSubmit)="createNoteGroup()">
+            <input class="formInput" type="text" formControlName="name" placeholder="Note Group Name">
+        <button class="submitButton" type="submit" [disabled]="!noteGroupForm.valid">Submit</button>
+    </form>
+</div>
