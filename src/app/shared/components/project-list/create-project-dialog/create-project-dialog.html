@@ -1,7 +1,9 @@
-<h2>Create a new project</h2>
-<form [formGroup]="projectForm" (ngSubmit)="createProject()">
-    <div>
-        Project Name: <input type="text" formControlName="projectName">
-    </div>
-    <button type="submit" [disabled]="!projectForm.valid">Submit</button>
-</form>
+<div class="formParent">
+    <h2>Create a new project</h2>
+    <form class="formClass" [formGroup]="projectForm" (ngSubmit)="createProject()">
+            <input class="formInput" type="text" formControlName="projectName" placeholder="Project Name">
+
+            <textarea class="formInput formTextArea" type="text" formControlName="description" placeholder="Description" maxlength="250"></textarea>
+        <button class="submitButton" type="submit" [disabled]="!projectForm.valid">Submit</button>
+    </form>
+</div>

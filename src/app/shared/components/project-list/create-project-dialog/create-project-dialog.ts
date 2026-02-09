@@ -17,7 +17,8 @@ export class CreateProjectDialog {
   ) {}
 
   projectForm = new FormGroup({
-    projectName: new FormControl<string>('', {nonNullable: true, validators:[Validators.required]})
+    projectName: new FormControl<string>('', {nonNullable: true, validators:[Validators.required]}),
+    description: new FormControl<string>(''),
   })
 
   protected createProject() {
