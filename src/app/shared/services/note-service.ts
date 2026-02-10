@@ -18,4 +18,8 @@ export class NoteService {
   createNoteGroup(noteGroup: Notegroup) {
     return this.http.post(environment.apiUrl + this.noteGroupUrl + this.createUrl, noteGroup, { responseType: 'text' })
   }
+
+  createNote(note: Note) {
+    return this.http.post(environment.apiUrl + this.noteUrl + this.createUrl, note, { responseType: 'text' })
+  }
 }

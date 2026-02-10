@@ -6,6 +6,8 @@ import { CreateNotegroupDialog } from './create-notegroup-dialog/create-notegrou
 
 import { Project } from '../../../data/schema/project';
 import { ProjectService } from '../../services/project-service';
+import { CreateNoteDialog } from './create-note-dialog/create-note-dialog';
+import { NoteService } from '../../services/note-service';
 
 @Component({
   selector: 'app-project-page',
@@ -29,6 +31,10 @@ export class ProjectPage {
 
   displayNoteGroupForm() {
     this.dialog.open(CreateNotegroupDialog, {data: {project: this.project}})
+  }
+
+  displayNoteForm(groupIndex: number) {
+    this.dialog.open(CreateNoteDialog, {data: {notegroup: this.project.noteGroups![groupIndex]}})
   }
 
   ngOnInit() {

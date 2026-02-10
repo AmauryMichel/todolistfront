@@ -8,6 +8,7 @@
         @for (note of notegroup.notes; track note.id) {
             <p>{{ note.text }}</p>
         }
+            <button class="createNoteButton" (click)="displayNoteForm($index)">Create a note</button>
         </div>
     }
     </div>
