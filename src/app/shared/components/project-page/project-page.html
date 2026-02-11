@@ -1,15 +1,25 @@
-@if (project) {
-    <button class="noteGroupButton" (click)="displayNoteGroupForm()">Create a note group</button>
-    <div class="grouplist" >
-    @for (notegroup of project.noteGroups; track $index) {
-        <div class="notegroup">
-            <h2>{{ notegroup.name }}</h2>
-
-        @for (note of notegroup.notes; track note.id) {
-            <p>{{ note.text }}</p>
-        }
-            <button class="createNoteButton" (click)="displayNoteForm($index)">Create a note</button>
-        </div>
-    }
+<div class="projectClass">
+    @if (project) {
+    <div class="projectSettings">
+        <button class="projectSettingButton" (click)="displayNoteGroupDialog()">Create a note group</button>
+        <button class="projectSettingButton">Add member to project</button>
+        <button class="projectSettingButton">Delete project</button>
     </div>
-}
+
+    <div class="grouplist">
+        @for (notegroup of project.noteGroups; track $index) {
+        <div class="notegroup">
+            <h2>{{ notegroup.name }}</h2><hr>
+
+            @for (note of notegroup.notes; track note.id) {
+            <div class="note">
+                {{ note.text }}
+            </div>
+            }
+
+            <button class="createNoteButton">Create a note</button>
+        </div>
+        }
+    </div>
+    }
+</div>
