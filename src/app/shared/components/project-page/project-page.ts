@@ -22,19 +22,10 @@ export class ProjectPage {
 
   constructor(
     private projectService: ProjectService,
+    private noteService: NoteService,
     private changeDetection: ChangeDetectorRef
   ) {
     this.projectId = this.route.snapshot.paramMap.get('id') || ''
-  }
-
-  private dialog = inject(Dialog)
-
-  displayNoteGroupForm() {
-    this.dialog.open(CreateNotegroupDialog, {data: {project: this.project}})
-  }
-
-  displayNoteForm(groupIndex: number) {
-    this.dialog.open(CreateNoteDialog, {data: {notegroup: this.project.noteGroups![groupIndex]}})
   }
 
   ngOnInit() {
@@ -42,6 +33,24 @@ export class ProjectPage {
       result => {
         this.project = result
         this.changeDetection.detectChanges()
+      }
+    )
+  }
+
+  private dialog = inject(Dialog)
+
+  displayNoteGroupDialog() {
+    this.dialog.open(CreateNotegroupDialog, { data: { project: this.project } })
+  }
+
+  displayNoteDialog(groupIndex: number) {
+    this.dialog.open(CreateNoteDialog, { data: { notegroup: this.project.noteGroups![groupIndex] } })
+  }
+
+  noteDelete(noteId: number) {
+    this.noteService.deleteNote(noteId).subscribe(
+      result => {
+        location.reload()
       }
     )
   }

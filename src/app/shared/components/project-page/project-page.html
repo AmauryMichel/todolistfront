@@ -13,11 +13,17 @@
 
             @for (note of notegroup.notes; track note.id) {
             <div class="note">
-                {{ note.text }}
+                <div class="noteLeftDiv">
+                    {{ note.text }}
+                </div>
+
+                <div class="noteRightDiv">
+                    <button (click)="noteDelete(note.id!)" class="deleteNoteButton">X</button>
+                </div>
             </div>
             }
 
-            <button class="createNoteButton">Create a note</button>
+            <button class="createNoteButton" (click)="displayNoteDialog($index)">Create a note</button>
         </div>
         }
     </div>
