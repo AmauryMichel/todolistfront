@@ -4,10 +4,12 @@ import { Dialog } from '@angular/cdk/dialog'
 
 import { CreateNotegroupDialog } from './create-notegroup-dialog/create-notegroup-dialog';
 
-import { Project } from '../../../data/schema/project';
 import { ProjectService } from '../../services/project-service';
 import { CreateNoteDialog } from './create-note-dialog/create-note-dialog';
 import { NoteService } from '../../services/note-service';
+
+import { Project } from '../../../data/schema/project';
+import { Note } from '../../../data/schema/note';
 
 @Component({
   selector: 'app-project-page',
@@ -45,6 +47,11 @@ export class ProjectPage {
 
   displayNoteDialog(groupIndex: number) {
     this.dialog.open(CreateNoteDialog, { data: { notegroup: this.project.noteGroups![groupIndex] } })
+  }
+  
+  noteSaveEdit(note: Note) {
+    this.noteService.editNoteText(note.id!, note.text).subscribe()
+    note.edit = false
   }
 
   noteDelete(noteId: number) {

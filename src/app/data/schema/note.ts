@@ -7,13 +7,13 @@ export class Note {
     group: Notegroup
     text: string
     noteOrderNumber: number
-    completed: boolean
+    completed: boolean = false
+    edit: boolean
 
     constructor(author: User, group: Notegroup, text: string, noteOrderNumber: number) {
         this.author = author
         this.group = group
         this.text = text
         this.noteOrderNumber = noteOrderNumber
-        this.completed = false
     }
 }

@@ -14,10 +14,22 @@
             @for (note of notegroup.notes; track note.id) {
             <div class="note">
                 <div class="noteLeftDiv">
+                    <!-- Change text to input if user clicked on the edit button -->
+                    @if (!note.edit) {
                     {{ note.text }}
+                    } @else {
+                    <input type="text" [(ngModel)]=note.text>
+                    }
                 </div>
 
                 <div class="noteRightDiv">
+
+                    @if (!note.edit) {
+                    <button (click)="note.edit=true">Edit</button>
+                    } @else {
+                    <button (click)="noteSaveEdit(note)">Save</button>
+                    }
+
                     <button (click)="noteDelete(note.id!)" class="deleteNoteButton">X</button>
                 </div>
             </div>
