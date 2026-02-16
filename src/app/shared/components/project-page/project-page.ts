@@ -48,7 +48,11 @@ export class ProjectPage {
   displayNoteDialog(groupIndex: number) {
     this.dialog.open(CreateNoteDialog, { data: { notegroup: this.project.noteGroups![groupIndex] } })
   }
-  
+
+  noteSetCompleted(noteId: number, checked: boolean) {
+    this.noteService.setNoteCompleted(noteId, checked).subscribe()
+  }
+
   noteSaveEdit(note: Note) {
     this.noteService.editNoteText(note.id!, note.text).subscribe()
     note.edit = false

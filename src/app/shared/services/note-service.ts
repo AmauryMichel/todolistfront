@@ -14,6 +14,7 @@ export class NoteService {
   private noteGroupUrl = '/notegroup'
   private noteUrl = '/note'
   private createUrl = '/create'
+  private setCompletedUrl = "/set-completed"
   private editText ="/edit-text"
   private deleteUrl ="/delete"
   
@@ -23,6 +24,10 @@ export class NoteService {
   
   createNote(note: Note) {
     return this.http.post(environment.apiUrl + this.noteUrl + this.createUrl, note, { responseType: 'text' })
+  }
+
+  setNoteCompleted(noteId: number, completed: boolean) {
+    return this.http.put(environment.apiUrl + this.noteUrl + "/" + noteId + this.setCompletedUrl, completed, { responseType: 'text' })
   }
 
   editNoteText(noteId: number, text: string) {

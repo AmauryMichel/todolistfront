@@ -30,6 +30,15 @@
     justify-content: space-between;
 }
 
+div:has(> .noteLeftDiv > input[type=checkbox]:checked) {
+    text-decoration: line-through;
+    background-color: hsl(0, 0%, 90%);
+}
+
+.noteLeftDiv {
+    display: flex;
+}
+
 .createNoteButton {
     margin: 25px;
 }

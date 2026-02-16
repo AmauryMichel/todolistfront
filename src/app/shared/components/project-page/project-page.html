@@ -14,6 +14,9 @@
             @for (note of notegroup.notes; track note.id) {
             <div class="note">
                 <div class="noteLeftDiv">
+                    <input class="finishedNoteCheckbox" type="checkbox" [checked]=note.completed
+                        (change)="noteSetCompleted(note.id!, $event.target.checked)">
+
                     <!-- Change text to input if user clicked on the edit button -->
                     @if (!note.edit) {
                     {{ note.text }}
