@@ -65,4 +65,25 @@ export class ProjectPage {
       }
     )
   }
+
+  noteGroupSetCompleted(notegroup: Notegroup, checked: boolean) {
+    this.noteService.setNoteGroupCompleted(notegroup.id!, checked).subscribe(
+      result => {
+        notegroup.completed = !notegroup.completed
+      }
+    )
+  }
+
+  noteGroupSaveEdit(group: Note) {
+    this.noteService.editNoteGroupText(group.id!, group.text).subscribe()
+    group.edit = false
+  }
+
+  noteGroupDelete(groupId: number) {
+    this.noteService.deleteNoteGroup(groupId).subscribe(
+      result => {
+        location.reload()
+      }
+    )
+  }
 }
