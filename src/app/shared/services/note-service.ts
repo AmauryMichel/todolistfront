@@ -21,7 +21,19 @@ export class NoteService {
   createNoteGroup(noteGroup: Notegroup) {
     return this.http.post(environment.apiUrl + this.noteGroupUrl + this.createUrl, noteGroup, { responseType: 'text' })
   }
-  
+
+  setNoteGroupCompleted(noteGroupId: number, completed: boolean) {
+    return this.http.put(environment.apiUrl + this.noteGroupUrl + "/" + noteGroupId + this.setCompletedUrl, completed, { responseType: 'text' })
+  }
+
+  editNoteGroupText(noteGroupId: number, text: string) {
+    return this.http.put(environment.apiUrl + this.noteGroupUrl + "/" + noteGroupId + this.editText, text, { responseType: 'text' })
+  }
+
+  deleteNoteGroup(noteGroupId: number) {
+    return this.http.delete(environment.apiUrl + this.noteGroupUrl + "/" + noteGroupId + this.deleteUrl, { responseType: 'text' })
+  }
+
   createNote(note: Note) {
     return this.http.post(environment.apiUrl + this.noteUrl + this.createUrl, note, { responseType: 'text' })
   }

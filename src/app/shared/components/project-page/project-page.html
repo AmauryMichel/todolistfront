@@ -9,7 +9,21 @@
     <div class="grouplist">
         @for (notegroup of project.noteGroups; track $index) {
         <div class="notegroup">
-            <h2>{{ notegroup.name }}</h2><hr>
+            <div class="notegroupDivTop">
+                <span></span>
+                <h2>
+                    {{ notegroup.name }}
+                    @if (notegroup.completed) {
+                        <span class="pi pi-check"></span>
+                    }
+                </h2>
+
+                <a href="javascript:void(0);" (click)="noteGroupSetCompleted(notegroup, !notegroup.completed)">Set completed</a>
+                <a href="javascript:void(0);">Change group name</a>
+                <a href="javascript:void(0);" (click)="noteGroupDelete(notegroup.id!)">Delete group</a>
+            </div>
+
+            <hr>
 
             @for (note of notegroup.notes; track note.id) {
             <div class="note">
