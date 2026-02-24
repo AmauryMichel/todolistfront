@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProjectList } from './project-list/project-list';
+import { ProjectList } from './project-list';
 
 describe('ProjectList', () => {
   let component: ProjectList;
