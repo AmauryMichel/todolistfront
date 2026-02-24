@@ -34,6 +34,11 @@ export class ProjectPage {
     this.projectService.getProject(this.projectId).subscribe(
       result => {
         this.project = result
+        //Sort all notegroups and notes
+        this.project.noteGroups?.sort(Notegroup.sort)
+        this.project.noteGroups?.forEach(noteGroup => {
+          noteGroup.notes?.sort(Note.sort)
+        });
         this.changeDetection.detectChanges()
       }
     )

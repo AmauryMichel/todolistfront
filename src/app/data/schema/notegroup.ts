@@ -14,4 +14,8 @@ export class Notegroup {
         this.name = name
         this.groupOrderNumber = groupOrderNumber
     }
+
+    static sort(noteGroup1: Notegroup, noteGroup2: Notegroup) {
+        return noteGroup1.groupOrderNumber - noteGroup2.groupOrderNumber
+    }
 }

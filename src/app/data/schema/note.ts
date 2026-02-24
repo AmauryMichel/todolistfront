@@ -16,4 +16,8 @@ export class Note {
         this.text = text
         this.noteOrderNumber = noteOrderNumber
     }
+
+    static sort(note1: Note, note2: Note) {
+        return note1.noteOrderNumber - note2.noteOrderNumber
+    }
 }
