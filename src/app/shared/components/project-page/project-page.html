@@ -18,9 +18,16 @@
                     }
                 </h2>
 
-                <a href="javascript:void(0);" (click)="noteGroupSetCompleted(notegroup, !notegroup.completed)">Set completed</a>
-                <a href="javascript:void(0);">Change group name</a>
-                <a href="javascript:void(0);" (click)="noteGroupDelete(notegroup.id!)">Delete group</a>
+                <div class="notegroupOptionMenu">
+                    <p-button (click)="notegroupPopover.toggle($event)" label="..."/>
+                    <p-popover #notegroupPopover>
+                        <div class="notegroupPopover" (click)="notegroupPopover.hide()">
+                            <a href="javascript:void(0);" (click)="noteGroupSetCompleted(notegroup, !notegroup.completed)">Set completed</a>
+                            <a href="javascript:void(0);">Change group name</a>
+                            <a href="javascript:void(0);" (click)="noteGroupDelete(notegroup.id!)">Delete group</a>
+                        </div>
+                    </p-popover>
+                </div>
             </div>
 
             <hr>

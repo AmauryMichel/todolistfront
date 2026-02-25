@@ -21,6 +21,26 @@
     height: 100%;
 }
 
+.notegroupDivTop {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 10px;
+}
+
+.notegroupOptionMenu {
+    display: flex;
+    align-items: center;
+}
+
+.notegroupPopover {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid;
+    padding: 10px;
+    gap: 10px;
+}
+
 .note {
     text-align: left;
     border: 1px solid #ccc;

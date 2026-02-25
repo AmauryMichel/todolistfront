@@ -1,6 +1,9 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ɵInternalFormsSharedModule, FormsModule } from '@angular/forms';
 import { Dialog } from '@angular/cdk/dialog'
+import { ButtonModule } from 'primeng/button';
+import { PopoverModule } from 'primeng/popover';
 
 import { CreateNotegroupDialog } from './create-notegroup-dialog/create-notegroup-dialog';
 
@@ -9,11 +12,12 @@ import { CreateNoteDialog } from './create-note-dialog/create-note-dialog';
 import { NoteService } from '../../services/note-service';
 
 import { Project } from '../../../data/schema/project';
+import { Notegroup } from '../../../data/schema/notegroup';
 import { Note } from '../../../data/schema/note';
 
 @Component({
   selector: 'app-project-page',
-  imports: [],
+  imports: [ɵInternalFormsSharedModule, FormsModule, PopoverModule, ButtonModule],
   templateUrl: './project-page.html',
   styleUrl: './project-page.css',
 })
