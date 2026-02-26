@@ -19,7 +19,7 @@
                 </h2>
 
                 <div class="notegroupOptionMenu">
-                    <p-button (click)="notegroupPopover.toggle($event)" label="..."/>
+                    <p-button (click)="notegroupPopover.toggle($event)" icon="pi pi-ellipsis-v" />
                     <p-popover #notegroupPopover>
                         <div class="notegroupPopover" (click)="notegroupPopover.hide()">
                             <a href="javascript:void(0);" (click)="noteGroupSetCompleted(notegroup, !notegroup.completed)">Set completed</a>
@@ -49,12 +49,12 @@
                 <div class="noteRightDiv">
 
                     @if (!note.edit) {
-                    <button (click)="note.edit=true">Edit</button>
+                    <button (click)="note.edit=true" class="pi pi-pencil"></button>
                     } @else {
-                    <button (click)="noteSaveEdit(note)">Save</button>
+                    <button (click)="noteSaveEdit(note)" class="pi pi-check"></button>
                     }
 
-                    <button (click)="noteDelete(note.id!)" class="deleteNoteButton">X</button>
+                    <button (click)="noteDelete(note.id)" class="deleteNoteButton pi pi-trash"></button>
                 </div>
             </div>
             }
