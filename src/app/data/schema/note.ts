@@ -2,7 +2,7 @@ import { Notegroup } from "./notegroup"
 import { User } from "./user"
 
 export class Note {
-    id?: number
+    id: number
     author: User
     group: Notegroup
     text: string

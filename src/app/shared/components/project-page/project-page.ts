@@ -39,9 +39,9 @@ export class ProjectPage {
       result => {
         this.project = result
         //Sort all notegroups and notes
-        this.project.noteGroups?.sort(Notegroup.sort)
-        this.project.noteGroups?.forEach(noteGroup => {
-          noteGroup.notes?.sort(Note.sort)
+        this.project.noteGroups.sort(Notegroup.sort)
+        this.project.noteGroups.forEach(noteGroup => {
+          noteGroup.notes.sort(Note.sort)
         });
         this.changeDetection.detectChanges()
       }
@@ -55,7 +55,7 @@ export class ProjectPage {
   }
 
   displayNoteDialog(groupIndex: number) {
-    this.dialog.open(CreateNoteDialog, { data: { notegroup: this.project.noteGroups![groupIndex] } })
+    this.dialog.open(CreateNoteDialog, { data: { notegroup: this.project.noteGroups[groupIndex] } })
   }
 
   noteSetCompleted(noteId: number, checked: boolean) {
@@ -63,7 +63,7 @@ export class ProjectPage {
   }
 
   noteSaveEdit(note: Note) {
-    this.noteService.editNoteText(note.id!, note.text).subscribe()
+    this.noteService.editNoteText(note.id, note.text).subscribe()
     note.edit = false
   }
 

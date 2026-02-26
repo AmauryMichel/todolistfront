@@ -24,7 +24,7 @@ export class CreateNotegroupDialog {
 
   protected createNoteGroup() {
     let name = this.noteGroupForm.getRawValue().name
-    let groupOrderNumber = this.data.project.noteGroups?.length || 0
+    let groupOrderNumber = this.data.project.noteGroups.length || 0
     let newNoteGroup = new Notegroup(this.data.project, name, groupOrderNumber)
     console.log(newNoteGroup)
 

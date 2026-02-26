@@ -26,7 +26,7 @@ export class CreateNoteDialog {
   protected createGroup() {
     let author: User = JSON.parse(localStorage.getItem("user") || '')
     let text = this.noteForm.getRawValue().text
-    let noteOrderNumber = this.data.notegroup.notes?.length || 0
+    let noteOrderNumber = this.data.notegroup.notes.length || 0
     let newNote: Note = new Note(author, this.data.notegroup, text, noteOrderNumber)
     console.log(newNote)
 
