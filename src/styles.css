@@ -5,6 +5,7 @@ body {
     font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+/*#region Form classes*/
 .formParent {
     display: flex;
     flex-direction: column;
@@ -62,6 +63,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
     transform: translateY(-1px);
 }
+/*#endregion*/
 
 /* TODO
 Error message box */

@@ -18,6 +18,7 @@ export class NoteService {
   private editText ="/edit-text"
   private deleteUrl ="/delete"
   
+  //#region NoteGroup functions
   createNoteGroup(noteGroup: Notegroup) {
     return this.http.post(environment.apiUrl + this.noteGroupUrl + this.createUrl, noteGroup, { responseType: 'text' })
   }
@@ -33,7 +34,9 @@ export class NoteService {
   deleteNoteGroup(noteGroupId: number) {
     return this.http.delete(environment.apiUrl + this.noteGroupUrl + "/" + noteGroupId + this.deleteUrl, { responseType: 'text' })
   }
+  //#endregion
 
+  //#region Note functions
   createNote(note: Note) {
     return this.http.post(environment.apiUrl + this.noteUrl + this.createUrl, note, { responseType: 'text' })
   }
@@ -49,4 +52,5 @@ export class NoteService {
   deleteNote(noteId: number) {
     return this.http.delete(environment.apiUrl + this.noteUrl + "/" + noteId + this.deleteUrl, { responseType: 'text' })
   }
+  //#endregion
 }

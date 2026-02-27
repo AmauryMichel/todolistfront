@@ -8,6 +8,7 @@
     padding: 10px 0px;
 }
 
+/*#region Notegroup classes*/
 .grouplist {
     display: flex;
     gap: 50px;
@@ -41,6 +42,9 @@
     gap: 10px;
 }
 
+/*#endregion*/
+
+/*#region Note classes*/
 .note {
     text-align: left;
     border: 1px solid #ccc;
@@ -62,3 +66,5 @@ div:has(> .noteLeftDiv > input[type=checkbox]:checked) {
 .createNoteButton {
     margin: 25px;
 }
+
+/*#endregion*/

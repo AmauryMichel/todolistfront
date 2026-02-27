@@ -58,6 +58,7 @@ export class ProjectPage {
     this.dialog.open(CreateNoteDialog, { data: { notegroup: this.project.noteGroups[groupIndex] } })
   }
 
+  //#region Note functions
   noteSetCompleted(noteId: number, checked: boolean) {
     this.noteService.setNoteCompleted(noteId, checked).subscribe()
   }
@@ -74,7 +75,9 @@ export class ProjectPage {
       }
     )
   }
+  //#endregion
 
+  //#region NoteGroup functions
   noteGroupSetCompleted(notegroup: Notegroup, checked: boolean) {
     this.noteService.setNoteGroupCompleted(notegroup.id!, checked).subscribe(
       result => {
@@ -95,4 +98,5 @@ export class ProjectPage {
       }
     )
   }
+  //#endregion
 }
