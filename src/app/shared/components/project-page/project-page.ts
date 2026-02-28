@@ -79,16 +79,16 @@ export class ProjectPage {
 
   //#region NoteGroup functions
   noteGroupSetCompleted(notegroup: Notegroup, checked: boolean) {
-    this.noteService.setNoteGroupCompleted(notegroup.id!, checked).subscribe(
+    this.noteService.setNoteGroupCompleted(notegroup.id, checked).subscribe(
       result => {
         notegroup.completed = !notegroup.completed
       }
     )
   }
 
-  noteGroupSaveEdit(group: Note) {
-    this.noteService.editNoteGroupText(group.id!, group.text).subscribe()
-    group.edit = false
+  noteGroupSaveEditName(notegroup: Notegroup) {
+    this.noteService.editNoteGroupText(notegroup.id, notegroup.name).subscribe()
+    notegroup.edit = false
   }
 
   noteGroupDelete(groupId: number) {

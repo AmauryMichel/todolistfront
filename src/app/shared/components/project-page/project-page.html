@@ -12,7 +12,13 @@
             <div class="notegroupDivTop">
                 <span></span>
                 <h2>
+                    @if (!notegroup.edit) {
                     {{ notegroup.name }}
+                    } @else {
+                    <input type="text" [(ngModel)]=notegroup.name>
+                    <button (click)="noteGroupSaveEditName(notegroup)" class="pi pi-check"></button>
+                    }
+                    
                     @if (notegroup.completed) {
                         <span class="pi pi-check"></span>
                     }
@@ -23,8 +29,8 @@
                     <p-popover #notegroupPopover>
                         <div class="notegroupPopover" (click)="notegroupPopover.hide()">
                             <a href="javascript:void(0);" (click)="noteGroupSetCompleted(notegroup, !notegroup.completed)">Set completed</a>
-                            <a href="javascript:void(0);">Change group name</a>
-                            <a href="javascript:void(0);" (click)="noteGroupDelete(notegroup.id!)">Delete group</a>
+                            <a href="javascript:void(0);" (click)="notegroup.edit = true">Change group name</a>
+                            <a href="javascript:void(0);" (click)="noteGroupDelete(notegroup.id)">Delete group</a>
                         </div>
                     </p-popover>
                 </div>
@@ -36,7 +42,7 @@
             <div class="note">
                 <div class="noteLeftDiv">
                     <input class="finishedNoteCheckbox" type="checkbox" [checked]=note.completed
-                        (change)="noteSetCompleted(note.id!, $event.target.checked)">
+                        (change)="noteSetCompleted(note.id, $event.target.checked)">
 
                     <!-- Change text to input if user clicked on the edit button -->
                     @if (!note.edit) {
