@@ -1,0 +1,12 @@
+<div class="formParent">
+    <h2>Member List</h2>
+    <div>
+        <ul>
+            @for (user of data.project.projectMembers; track user.id) {
+            <li>
+                {{ user.username }}
+            </li>
+            }
+        </ul>
+    </div>
+</div>
