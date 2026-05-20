@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { User } from '../../../../data/schema/user';
@@ -19,12 +19,24 @@ export class MemberListDialog {
   constructor(
     @Inject(DIALOG_DATA) public data: { project: Project },
     private userService: UserService,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private changeDetection: ChangeDetectorRef
   ) { }
 
   inviteMemberForm = new FormGroup({
     username: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
   })
+
+  protected removeMember(user: User) {
+    this.projectService.removeMember(this.data.project.id, user).subscribe(
+      result => {
+        //Remove user from displayed list
+        const index = this.data.project.projectMembers.indexOf(user)
+        this.data.project.projectMembers.splice(index, 1)
+        this.changeDetection.detectChanges()
+      }
+    )
+  }
 
   ngOnInit() {
 

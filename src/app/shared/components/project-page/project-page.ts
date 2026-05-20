@@ -14,6 +14,7 @@ import { NoteService } from '../../services/note-service';
 import { Project } from '../../../data/schema/project';
 import { Notegroup } from '../../../data/schema/notegroup';
 import { Note } from '../../../data/schema/note';
+import { MemberListDialog } from './member-list-dialog/member-list-dialog';
 
 @Component({
   selector: 'app-project-page',
@@ -56,6 +57,10 @@ export class ProjectPage {
 
   displayNoteDialog(groupIndex: number) {
     this.dialog.open(CreateNoteDialog, { data: { notegroup: this.project.noteGroups[groupIndex] } })
+  }
+
+  displayMemberListDialog() {
+    this.dialog.open(MemberListDialog, { data: { project: this.project } })
   }
 
   //#region Note functions

@@ -5,6 +5,7 @@
             @for (user of data.project.projectMembers; track user.id) {
             <li>
                 {{ user.username }}
+                <button (click)="removeMember(user)">X</button>
             </li>
             }
         </ul>
